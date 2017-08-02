@@ -1,5 +1,5 @@
 <template>
-    <div class="container">
+  <!--  <div class="container">
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
                 <div class="panel panel-default">
@@ -53,18 +53,128 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div>-->
+        <v-layout row wrap>
+            <v-flex xs6 offset-xs3>
+                <v-card class="grey lighten-4 elevation-0">
+
+                    <form @submit.prevent="submit">
+                        <v-layout row>
+                            <v-flex xs4>
+                                <v-subheader>Full Name</v-subheader>
+                            </v-flex>
+                            <v-flex xs6>
+                                <v-text-field
+                                        name="name"
+                                        label="your Full Name"
+                                        single-line
+                                        append-icon="person"
+                                        v-model="name"
+                                        v-bind:rules="errors.name"
+                                ></v-text-field>
+                            </v-flex>
+                            <v-flex xs2>
+                            </v-flex>
+                        </v-layout>
+                        <v-layout row>
+                            <v-flex xs4>
+                                <v-subheader>Email Address</v-subheader>
+                            </v-flex>
+                            <v-flex xs6>
+                                <v-text-field
+                                        name="email"
+                                        label="your email address"
+                                        single-line
+                                        append-icon="email"
+                                        v-model="email"
+                                        v-bind:rules="errors.email"
+                                ></v-text-field>
+                            </v-flex>
+                            <v-flex xs2>
+                            </v-flex>
+                        </v-layout>
+                        <v-layout row>
+                            <v-flex xs4>
+                                <v-subheader>ID Number</v-subheader>
+                            </v-flex>
+                            <v-flex xs6>
+                                <v-text-field
+                                        name="idNumber"
+                                        label="your ID Number"
+                                        single-line
+                                        append-icon="beenhere"
+                                        v-model="idNumber"
+                                        v-bind:rules="errors.idNumber"
+                                ></v-text-field>
+                            </v-flex>
+                            <v-flex xs2>
+                            </v-flex>
+                        </v-layout>
+                        <v-layout row>
+                            <v-flex xs4>
+                                <v-subheader>Phone Number</v-subheader>
+                            </v-flex>
+                            <v-flex xs6>
+                                <v-text-field
+                                        name="phone"
+                                        label="your Phone Number"
+                                        single-line
+                                        append-icon="phone"
+                                        v-model="phone"
+                                        v-bind:rules="errors.phone"
+                                ></v-text-field>
+                            </v-flex>
+                            <v-flex xs2>
+                            </v-flex>
+                        </v-layout>
+                        <v-layout row>
+                            <v-flex xs4>
+                                <v-subheader>Password</v-subheader>
+                            </v-flex>
+                            <v-flex xs6>
+                                <v-text-field
+                                        name="password"
+                                        label="your password"
+                                        type="password"
+                                        single-line
+                                        append-icon="lock"
+                                        v-model="password"
+                                        v-bind:rules="errors.password"
+                                ></v-text-field>
+                            </v-flex>
+                            <v-flex xs2>
+
+                            </v-flex>
+                        </v-layout>
+                        <v-layout row>
+                            <v-flex xs4>
+
+                            </v-flex>
+                            <v-flex xs6>
+                                <v-btn type="submit" block primary >Register</v-btn>
+                            </v-flex>
+
+                        </v-layout>
+                    </form>
+
+                </v-card>
+            </v-flex>
+        </v-layout>
+
 </template>
 
 <script>
     import { mapActions } from 'vuex'
+    import { isEmpty } from 'lodash'
 
     export default {
         data(){
 
             return {
-                username: null,
+                name: null,
                 email: null,
+                phone: null,
+                idNumber: null,
                 password: null,
                 errors: []
 
@@ -81,14 +191,22 @@
 
                     payload: {
 
-                        username: this.username,
+                        name: this.name,
                         email: this.email,
+                        idNumber: this.idNumber,
+                        phone: this.phone,
                         password: this.password
                     },
 
                     context: this
                 }).then(() => {
-                    this.$router.replace({ name: 'home'})
+
+                    if(isEmpty(this.errors)){
+
+                        this.$router.replace({ name: 'dashboard'})
+                    }
+                    this.$router.replace({ name: 'dashboard'})
+
                 })
             }
         }

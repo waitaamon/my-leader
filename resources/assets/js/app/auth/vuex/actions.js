@@ -30,10 +30,12 @@ export const login = ( { dispatch }, { payload, context }) => {
 
             dispatch('fetchUser')
 
-
         })
 
+
+
     }).catch((error) => {
+
         context.errors = error.response.data.errors
     })
 }

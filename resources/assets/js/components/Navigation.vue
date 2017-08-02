@@ -1,9 +1,9 @@
 <template>
-    <nav class="navbar navbar-default navbar-static-top">
+    <!--<nav class="navbar navbar-default navbar-static-top">
         <div class="container">
             <div class="navbar-header">
 
-                <!-- Collapsed Hamburger -->
+                &lt;!&ndash; Collapsed Hamburger &ndash;&gt;
                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#app-navbar-collapse">
                     <span class="sr-only">Toggle Navigation</span>
                     <span class="icon-bar"></span>
@@ -11,12 +11,12 @@
                     <span class="icon-bar"></span>
                 </button>
 
-                <!-- Branding Image -->
+                &lt;!&ndash; Branding Image &ndash;&gt;
                 <router-link :to="{ name: 'home'}" class="navbar-brand">Boilerplate</router-link>
             </div>
 
             <div class="collapse navbar-collapse" id="app-navbar-collapse">
-                <!-- Left Side Of Navbar -->
+                &lt;!&ndash; Left Side Of Navbar &ndash;&gt;
                 <ul class="nav navbar-nav">
                     &nbsp;
                 </ul>
@@ -28,15 +28,15 @@
 
 
 
-                <!-- Right Side Of Navbar -->
+                &lt;!&ndash; Right Side Of Navbar &ndash;&gt;
                 <ul class="nav navbar-nav navbar-right" v-if="user.authenticated">
-                    <!-- Authentication Links -->
+                    &lt;!&ndash; Authentication Links &ndash;&gt;
 
                     <li><router-link :to="{ name: 'timeline'}">Timeline</router-link></li>
 
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                           {{ user.data.username }}  <span class="caret"></span>
+                           {{ user.data.name }}  <span class="caret"></span>
                         </a>
 
                         <ul class="dropdown-menu" role="menu">
@@ -53,7 +53,8 @@
                 </ul>
             </div>
         </div>
-    </nav>
+    </nav>-->
+
 </template>
 
 <script>
@@ -61,6 +62,7 @@
     import {mapGetters, mapActions} from 'vuex'
 
     export default{
+
         computed: mapGetters({
             user: 'auth/user',
         })
@@ -80,4 +82,10 @@
         }
     }
 </script>
+
+<style lang="scss" scoped>
+    #navigation-1 a {
+        text-decoration: none;
+    }
+</style>
 

@@ -1,7 +1,11 @@
 
 import  router from './router'
 import store from './vuex'
+import vuetify from './vuetify'
 import localforage from 'localforage'
+
+
+
 
 localforage.config({
 
@@ -18,6 +22,10 @@ localforage.config({
 require('./bootstrap');
 
 window.Vue = require('vue');
+
+import 'vuetify/dist/vuetify.min.css'
+
+
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -46,6 +54,7 @@ store.dispatch('auth/setToken').then(() => {
 const app = new Vue({
     router,
     store,
+    vuetify,
     el: '#app',
 
 });

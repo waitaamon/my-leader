@@ -1,13 +1,11 @@
 <template>
-
-    <div>
-
-        <navigation></navigation>
-
-        <div class="container">
-            <router-view></router-view>
-        </div>
-
-    </div>
+    <v-app>
+        <v-toolbar></v-toolbar>
+        <main>
+            <v-container fluid>
+                <router-view></router-view>
+            </v-container>
+        </main>
+        <v-footer></v-footer>
+    </v-app>
 </template>
-
