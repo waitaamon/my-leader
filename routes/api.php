@@ -23,6 +23,16 @@ Route::group(['middleware' => 'jwt.auth'], function (){
 
     Route::get('/me', 'Auth\AuthController@user');
     Route::get('/timeline', 'TimelineController@index');
+
+
+    //voter namespace
+    Route::group(['namespace' => 'voter'], function (){
+
+        //post voter details
+        Route::post('/postvoterdetails/{id}',  'VoterController@postVoterDetails');
+    });
+
+
 });
 
 

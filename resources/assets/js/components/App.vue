@@ -1,11 +1,14 @@
 <template>
     <v-app>
-        <v-toolbar></v-toolbar>
+        <navigation></navigation>
         <main>
             <v-container fluid>
                 <router-view></router-view>
             </v-container>
         </main>
-        <v-footer></v-footer>
+        <v-footer class="pa-3">
+            <v-spacer></v-spacer>
+                <div>&copy; {{ new Date().getFullYear() }}</div>
+        </v-footer>
     </v-app>
 </template>

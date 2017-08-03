@@ -55,6 +55,24 @@
         </div>
     </nav>-->
 
+    <v-toolbar>
+        <v-toolbar-title> <router-link :to="{ name: 'home'}">Know My Leader</router-link></v-toolbar-title>
+        <v-spacer></v-spacer>
+        <v-toolbar-side-icon class="hidden-md-and-up"></v-toolbar-side-icon>
+        <v-toolbar-items class="hidden-sm-and-down"  v-if="!user.authenticated">
+            <router-link :to="{ name: 'login'}" class="logout">Login</router-link> &nbsp;&nbsp;&nbsp;
+            <router-link :to="{ name: 'register'}" class="logout">Register</router-link>
+
+        </v-toolbar-items>
+        <v-toolbar-items class="hidden-sm-and-down"  v-if="user.authenticated">
+            <v-btn flat>{{ user.data.name }}</v-btn>
+            <a href="#" @click.prevent="signOut" class="logout">
+                Logout
+            </a>
+
+        </v-toolbar-items>
+    </v-toolbar>
+
 </template>
 
 <script>
@@ -84,8 +102,24 @@
 </script>
 
 <style lang="scss" scoped>
-    #navigation-1 a {
+    .toolbar a {
         text-decoration: none;
+        color:#ccc;
+    }
+    .toolbar .logout{
+        display: flex;
+
+        max-width: 100%;
+        margin-top: 5%;
+        color: #29333c;
+        padding: 6px 25px;
+        border: 1px solid;
+        margin-bottom: 15px;
+
+        &:hover{
+            border-color: #00acc1;
+            color: #00acc1;
+        }
     }
 </style>
 
